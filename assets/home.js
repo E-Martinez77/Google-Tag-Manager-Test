@@ -14,3 +14,32 @@
 
 //   console.log("Push Event - Add To Cart");
 // });
+
+let atc = document.querySelectorAll("button");
+
+for (let i = 0; i < atc.length; i++) {
+  if (atc[i].dataset.hook == "add-to-cart") {
+    atc[i].addEventListener(
+      "click",
+      function () {
+        console.log("test");
+      },
+      { passive: true }
+    );
+  }
+}
+
+document.querySelectorAll("button")[8].addEventListener(
+  "click",
+  function () {
+    console.log("test");
+  },
+  { passive: true }
+);
+document.querySelector("button")[8].addEventListener(
+  "click",
+  function () {
+    console.log("test");
+  },
+  { passive: true }
+);
