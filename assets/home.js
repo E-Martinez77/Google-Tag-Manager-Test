@@ -15,31 +15,53 @@
 //   console.log("Push Event - Add To Cart");
 // });
 
+//Empire in the air add to cart
+
 let atc = document.querySelectorAll("button");
 
 for (let i = 0; i < atc.length; i++) {
   if (atc[i].dataset.hook == "add-to-cart") {
-    atc[i].addEventListener(
-      "click",
-      function () {
-        console.log("test");
-      },
-      { passive: true }
-    );
+    atc[i].addEventListener("click", function () {
+      console.log("test");
+    });
   }
 }
 
-document.querySelectorAll("button")[8].addEventListener(
-  "click",
-  function () {
-    console.log("test");
-  },
-  { passive: true }
-);
-document.querySelector("button")[8].addEventListener(
-  "click",
-  function () {
-    console.log("test");
-  },
-  { passive: true }
-);
+//Generic checkout "Any site for header fire"
+
+if (window.location.href.indexOf("checkout") > -1) {
+}
+
+parseFloat(document.querySelectorAll("span")[0].textContent.replace("$", ""));
+
+function pintrk() {}
+
+pintrk("track", "AddToCart", {
+  value: "",
+  currency: "",
+  product_id: "",
+});
+
+pintrk("track", "checkout", {
+  value: "",
+  currency: "",
+});
+
+/*
+Squarespace
+*/
+
+/*
+Big Commerce
+
+%%GLOBAL_ProductId%%
+
+%%GLOBAL_value%%
+%%GLOBAL_CurrencyName%%
+
+https://developer.bigcommerce.com/legacy/blueprint-themes/global-variables
+*/
+
+/*
+Wix
+*/
