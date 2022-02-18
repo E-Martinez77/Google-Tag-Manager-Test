@@ -43,29 +43,6 @@
 
     <!-- Add To Cart Push Event -->
 
-    <script>
-
-        function atcPush(){
-            const atcBtn = document.querySelector("#atc");
-    
-            atcBtn.addEventListener("click", () => {
-                window.dataLayer.push({
-                    "orderValue": 1.00,
-                    "currency": "USD",
-                    "orderQuantity": 5,
-                    "orderId": "0-000001",
-                    "productId": "0-000001",
-                    "productCategory": "Test_Cat",
-                });
-    
-                console.log("Push Event - Add To Cart");
-            });
-        }
-
-        window.addEventListener('load', function(){
-            atcPush()
-        })
-    </script>
 
     <!-- Add To Cart Push Event End -->
  
