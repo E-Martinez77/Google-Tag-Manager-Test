@@ -1,67 +1,56 @@
-// const atcPush = () => {};
+function gtmEvents() {
+  let btns = document.querySelectorAll("button");
 
-// const atcBtn = document.querySelector("#atc");
+  dataLayer.push({
+    event: "pageView",
+    ecommerce: {
+      product_id: "000001",
+    },
+  });
 
-// atcBtn.addEventListener("click", () => {
-//   dataLayer.push({
-//     "Order Value": "1.00",
-//     Currency: "USD",
-//     "Order Quantity": "5",
-//     "Order ID": "0-000001",
-//     "Product ID": "0-000001",
-//     "Product Category": "Test_Cat",
-//   });
-
-//   console.log("Push Event - Add To Cart");
-// });
-
-//Empire in the air add to cart
-
-let atc = document.querySelectorAll("button");
-
-for (let i = 0; i < atc.length; i++) {
-  if (atc[i].dataset.hook == "add-to-cart") {
-    atc[i].addEventListener("click", function () {
-      console.log("test");
-    });
+  for (let i = 0; i < btns.length; i++) {
+    if (btns[i].classList.contains("add-to-cart")) {
+      btns[i].addEventListener("click", function () {
+        dataLayer.push({
+          event: "addToCart",
+          ecommmerce: {
+            price: this.dataset.price,
+            quantity: this.dataset.qty,
+            category: this.dataset.category,
+            product_id: this.dataset.product_id,
+          },
+        });
+      });
+    } else if (btns[i].classList.contains("lead")) {
+      btns[i].addEventListener("click", function () {
+        dataLayer.push({
+          event: "lead",
+          lead_type: this.dataset.signup,
+        });
+      });
+    }
   }
+
+  let forms = document.querySelectorAll(".needs-validation");
+
+  for (let i = 0; i < forms.length; i++) {
+    forms[i].addEventListener(
+      "submit",
+      function (e) {
+        if (!forms[i].checkValidity()) {
+          e.preventDefault();
+          e.stopPropagation();
+        } else {
+          e.preventDefault();
+          dataLayer.push({ event: "signUp", lead_type: "form-submission" });
+        }
+        forms[i].classList.add("was-validated");
+      },
+      false
+    );
+  }
+
+  console.log("GTM Events Loaded.");
 }
 
-//Generic checkout "Any site for header fire"
-
-if (window.location.href.indexOf("checkout") > -1) {
-}
-
-parseFloat(document.querySelectorAll("span")[0].textContent.replace("$", ""));
-
-function pintrk() {}
-
-pintrk("track", "AddToCart", {
-  value: "",
-  currency: "",
-  product_id: "",
-});
-
-pintrk("track", "checkout", {
-  value: "",
-  currency: "",
-});
-
-/*
-Squarespace
-*/
-
-/*
-Big Commerce
-
-%%GLOBAL_ProductId%%
-
-%%GLOBAL_value%%
-%%GLOBAL_CurrencyName%%
-
-https://developer.bigcommerce.com/legacy/blueprint-themes/global-variables
-*/
-
-/*
-Wix
-*/
+window.addEventListener("load", gtmEvents);

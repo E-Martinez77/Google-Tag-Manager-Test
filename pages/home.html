@@ -10,24 +10,6 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 
-        <script>
-
-
-            //Do not overwrite the window.dataLayer variable: When you use the data layer directly (e.g. dataLayer = [{'item': 'value'}]), it will overwrite any existing values in the dataLayer. Tag Manager installations should instantiate the data layer as high up in the source code as possible, above the container snippet or any Optimize page hiding snippet, using window.dataLayer = window.dataLayer || [];. After the dataLayer has been declared, use dataLayer.push({'item': 'value'}) to add additional values to it, and if those values need to be available to Tag Manager when the page loads, then that dataLayer.push() call needs to be above the Tag Manager container code as well.
-
-            //https://developers.google.com/tag-platform/tag-manager/web/datalayer?hl=en_US
-            window.dataLayer = window.dataLayer || []; //FIFO message priority
-
-            // dataLayer = [{}]; Not sure if this requires a declaration, or if it is part of te base code? 
-    
-            // dataLayer.push({}); Dynamic layer. Not sure how to bind this to an event. 
-
-            //Event needs to occur via onclick attribute, or preferrably a custom eventListener 
-            //TODO: Research REACT handlers w/GTM
-
-
-            //Important: Do not use Custom HTML tag to attempt to configure consent settings in Tag Manager. Since consent settings need to be applied before the relevant tags fire in a Tag Manager container, you must apply Tag Manager Consent APIs to configure default and update behavior.
-        </script>
 
     <!-- Google Tag Manager -->
     <script>(function (w, d, s, l, i) {
@@ -42,7 +24,7 @@
 
 
 
- 
+
 </head>
 
 <body>
@@ -64,47 +46,46 @@
 
 
         <div class="container mt-5 text-center">
-            <button id="atc" class="btn btn-primary gtm-click" data-category="" data-price="0" data-qty="1" data-product_id="000001">
+            <button id="atc" class="btn btn-primary add-to-cart" data-category="" data-price="0" data-qty="1"
+                data-product_id="000001">
                 Add To Cart
             </button>
         </div>
         <div class="container mt-5 text-center">
-            <a href="checkout.html" id="checkout" class="btn btn-primary gtm-click">
+            <a href="checkout.html" id="checkout" class="btn btn-primary checkout">
                 Checkout
             </a>
         </div>
         <div class="container mt-5 text-center">
-            <button id="sign-up" class="btn btn-primary gtm-click">
-                Sign Up
+            <button id="lead" class="btn btn-primary lead" data-signup="general-lead">
+                Learn More
             </button>
         </div>
         <div class="container mt-5 text-center">
-            <span>Shop Cheeck Quick Add</span>
-            <button data-fullwidth="true" data-mobile="false" data-hook="product-item-add-to-cart-button" class="s1-w_G s1Zi24 s2oZO8 o33aXh--fullWidth s2YpFE s3n8OV" aria-live="assertive" type="button" tabindex="0" aria-disabled="false"><span class="sXoZ_p">Add to Cart</span></button>
-        </div>
-        <div class="container mt-5 text-center">
-            <span>Shop Cheeck Main Product Add</span>
-            <button data-fullwidth="false" data-mobile="false" data-hook="add-to-cart" class="buttonnext437509235__root Focusable859494256__root Button2259921367__root StatesButton2983174387__root AddToCartButton3061789056__addToCartButton _36nLb" aria-live="assertive" type="button" tabindex="0" aria-disabled="false"><span class="buttonnext437509235__content">Add to Cart </span></button>
-        </div>
-        <div class="container mt-5 text-center">
-            <span>Shop Cheeck Buy Now</span>
-            <button data-fullwidth="true" data-mobile="false" data-hook="buy-now-button" class="buttonnext437509235__root Focusable859494256__root Button2259921367__root Button2259921367---size-5-large Button2259921367--fullWidth BuyNowButton479012363__buyNowButton" type="button" tabindex="0" aria-disabled="false"><span class="buttonnext437509235__content">Buy Now</span></button>
-        </div>
-        <div class="container mt-5 text-center">
-            <form>
+            <form class="needs-validation" novalidate>
                 <div class="mb-3">
                     <label for="name" class="form-label">Please enter Full Name</label>
-                    <input id="name" type="text" class="form-control" name="name">
+                    <input id="name" type="text" class="form-control" name="name" required>
+                    <div class="invalid-feedback">
+                        Cannot Be Empty.
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Please enter Email Address</label>
-                    <input id="email" type="email" class="form-control" name="email">
+                    <input id="email" type="email" class="form-control" name="email" required>
+                    <div class="invalid-feedback">
+                        Cannot Be Empty.
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label for="more-details">Please enter additional details</label>
-                    <textarea name="more-details" id="more-details" cols="30" rows="10" class="form-control"></textarea>
+                    <textarea name="more-details" id="more-details" cols="30" rows="10" class="form-control"
+                        required></textarea>
+                    <div class="invalid-feedback">
+                        Cannot Be Empty.
+                    </div>
                 </div>
-                <button id="details" type="submit" class="btn btn-primary">Submit</button>
+                <button id="details" type="submit" class="btn btn-primary form-submit">Submit</button>
             </form>
         </div>
 
@@ -119,7 +100,7 @@
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
         crossorigin="anonymous"></script>
 
-        <script src="../assets/home.js"></script>
+    <script src="../assets/home.js"></script>
 
 </body>
 
