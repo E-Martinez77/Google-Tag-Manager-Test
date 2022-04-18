@@ -13,7 +13,7 @@ function gtmEvents() {
       btns[i].addEventListener("click", function () {
         dataLayer.push({
           event: "addToCart",
-          ecommmerce: {
+          ecommerce: {
             price: this.dataset.price,
             quantity: this.dataset.qty,
             category: this.dataset.category,
